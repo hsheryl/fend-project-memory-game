@@ -4,7 +4,7 @@
 let cards = document.getElementsByClassName("card");
 let cardArray = [...cards];
 let cardDeck = document.querySelector(".deck");
-
+let reset = document.querySelector(".fa-repeat");
 
 /*
  * Display the cards on the page
@@ -13,6 +13,9 @@ let cardDeck = document.querySelector(".deck");
  *   - add each card's HTML to the page
  */
 window.onload = displayDeck();
+reset.addEventListener('click', function () {
+  displayDeck();
+});
 
 
 function displayDeck() {
