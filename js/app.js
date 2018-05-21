@@ -19,7 +19,7 @@ reset.addEventListener('click', function () {
 
 
 function displayDeck() {
-  resetCards();
+  resetClasses();
   let shuffled = shuffle(cardArray);
   cardDeck.innerHTML = "";
   for(let i = 0; i<cardArray.length; i++){
@@ -27,7 +27,7 @@ function displayDeck() {
   }
 }
 
-function resetCards() {
+function resetClasses() {
   let open = document.getElementsByClassName("open");
   while (open.length){
     open[0].classList.remove("open");
