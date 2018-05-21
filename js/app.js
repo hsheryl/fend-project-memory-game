@@ -19,10 +19,26 @@ reset.addEventListener('click', function () {
 
 
 function displayDeck() {
+  resetCards();
   let shuffled = shuffle(cardArray);
   cardDeck.innerHTML = "";
   for(let i = 0; i<cardArray.length; i++){
     cardDeck.appendChild(shuffled[i]);
+  }
+}
+
+function resetCards() {
+  let open = document.getElementsByClassName("open");
+  while (open.length){
+    open[0].classList.remove("open");
+  }
+  let show = document.getElementsByClassName("show");
+  while (show.length){
+    show[0].classList.remove("show");
+  }
+  let match = document.getElementsByClassName("match");
+  while (match.length){
+    match[0].classList.remove("match");
   }
 }
 
