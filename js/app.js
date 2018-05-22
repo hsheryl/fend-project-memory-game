@@ -40,6 +40,10 @@ function resetClasses() {
   while (match.length){
     match[0].classList.remove("match");
   }
+  let yellow = document.getElementsByClassName("yellow");
+  while (yellow.length){
+    yellow[0].classList.remove("yellow");
+  }
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
