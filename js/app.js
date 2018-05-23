@@ -5,6 +5,8 @@ let cards = document.getElementsByClassName("card");
 let cardArray = [...cards];
 let cardDeck = document.querySelector(".deck");
 let reset = document.querySelector(".fa-repeat");
+let moves = document.querySelector(".moves");
+let numMoves = 0;
 
 /*
  * Display the cards on the page
@@ -20,6 +22,7 @@ reset.addEventListener('click', function () {
 
 function displayDeck() {
   resetClasses();
+  moves.innerHTML = numMoves;
   let shuffled = shuffle(cardArray);
   cardDeck.innerHTML = "";
   for(let i = 0; i<cardArray.length; i++){
