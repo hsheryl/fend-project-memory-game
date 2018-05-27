@@ -7,6 +7,7 @@ let cardDeck = document.querySelector(".deck");
 let reset = document.querySelector(".fa-repeat");
 let moves = document.querySelector(".moves");
 let numMoves = 0;
+let cardsOpen = 0;
 
 /*
  * Display the cards on the page
@@ -75,9 +76,42 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-cardDeck.addEventListener('click', displayCard);
+cardDeck.addEventListener('click', gamePlay);
+
+function gamePlay(event){
+  console.log(cardsOpen + " " + event.target.classList);
+  if (cardsOpen < 2 && !event.target.classList.contains("open") && !event.target.classList.contains("match")) {
+    cardsOpen++;
+    displayCard(event);
+    checkMatch(event);
+  }
+}
 
 function displayCard(event){
   event.target.classList.add("open");
   event.target.classList.add("show");
+}
+
+function checkMatch(event){
+  let cardOpen = document.getElementsByClassName("open");
+  if(cardOpen.length == 2){
+    if(cardOpen.item(0).firstElementChild.classList[1] == cardOpen.item(1).firstElementChild.classList[1]){
+      while(cardOpen.length){
+        cardOpen[0].classList.add("match");
+        cardOpen[0].classList.remove("show");
+        cardOpen[0].classList.remove("open")
+        cardsOpen = 0;
+      }
+    }else{
+      setTimeout(function(){flipBack(cardOpen);}, 1000);
+    };
+  };
+}
+
+function flipBack(cardOpen){
+  while(cardOpen.length){
+    cardOpen[0].classList.remove("show");
+    cardOpen[0].classList.remove("open");
+    cardsOpen = 0;
+  }
 }
