@@ -23,6 +23,7 @@ reset.addEventListener('click', function () {
 
 function displayDeck() {
   resetClasses();
+  numMoves = 0;
   moves.innerHTML = numMoves;
   let shuffled = shuffle(cardArray);
   cardDeck.innerHTML = "";
@@ -79,7 +80,6 @@ function shuffle(array) {
 cardDeck.addEventListener('click', gamePlay);
 
 function gamePlay(event){
-  console.log(cardsOpen + " " + event.target.classList);
   if (cardsOpen < 2 && !event.target.classList.contains("open") && !event.target.classList.contains("match")) {
     cardsOpen++;
     displayCard(event);
@@ -95,6 +95,8 @@ function displayCard(event){
 function checkMatch(event){
   let cardOpen = document.getElementsByClassName("open");
   if(cardOpen.length == 2){
+    numMoves++;
+    moves.innerHTML = numMoves;
     if(cardOpen.item(0).firstElementChild.classList[1] == cardOpen.item(1).firstElementChild.classList[1]){
       while(cardOpen.length){
         cardOpen[0].classList.add("match");
