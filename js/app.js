@@ -6,6 +6,13 @@ let cardArray = [...cards];
 let cardDeck = document.querySelector(".deck");
 let reset = document.querySelector(".fa-repeat");
 let moves = document.querySelector(".moves");
+let stars = document.querySelector(".stars");
+let winGame = document.getElementById('all-matched');
+let modalText = document.querySelector(".modal-text");
+let closeModal = document.getElementsByClassName("close")[0];
+let threeGames = document.getElementById('three-games');
+let modalTextThreeGames = document.querySelector(".modal-text-three-games");
+let closeModalThreeGames = document.getElementsByClassName("close-three-games")[0];
 let numMoves = 0;
 let cardsOpen = 0;
 let matchCounter = 0;
@@ -19,6 +26,7 @@ let gameCounter = 0;
  */
 window.onload = displayDeck();
 reset.addEventListener('click', function () {
+  gameCounter = 0;
   displayDeck();
 });
 
@@ -33,6 +41,11 @@ function displayDeck() {
     cardDeck.appendChild(shuffled[i]);
   }
   matchCounter = 0;
+  if(gameCounter != 0){
+    starToBeFilledIn = document.getElementById(gameCounter.toString());
+    starToBeFilledIn.classList.add('yellow');
+  }
+  gameCounter++;
   cardDeck.addEventListener('click', gamePlay);
 }
 
@@ -49,9 +62,11 @@ function resetClasses() {
   while (match.length){
     match[0].classList.remove("match");
   }
-  let yellow = document.getElementsByClassName("yellow");
-  while (yellow.length){
-    yellow[0].classList.remove("yellow");
+  if(gameCounter === 0){
+    let yellow = document.getElementsByClassName("yellow");
+    while (yellow.length){
+      yellow[0].classList.remove("yellow");
+    }
   }
 }
 
@@ -84,17 +99,34 @@ function shuffle(array) {
 
 
 function gamePlay(event){
-  console.log(matchCounter);
   if (cardsOpen < 2 && !event.target.classList.contains("open") && !event.target.classList.contains("match")) {
     cardsOpen++;
     displayCard(event);
     checkMatch(event);
     if(matchCounter === 8){
-          displayDeck();
+      endGame();
     }
   }
 }
 
+function endGame(){
+  if(gameCounter < 3){
+    modalText.innerHTML = numMoves;
+    winGame.style.display = "block";
+    closeModal.onclick = function(){
+      winGame.style.display = "none";
+    }
+    displayDeck();
+  }else{
+    modalTextThreeGames.innerHTML = numMoves;
+    threeGames.style.display = "block";
+    closeModalThreeGames.onclick = function(){
+      threeGames.style.display = "none";
+    }
+    gameCounter = 0;
+    displayDeck();
+  }
+}
 
 function displayCard(event){
   event.target.classList.add("open");

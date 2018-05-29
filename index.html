@@ -17,9 +17,9 @@
 
         <section class="score-panel">
         	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
+        		<li><i id="1" class="fa fa-star"></i></li>
+        		<li><i id="2" class="fa fa-star"></i></li>
+        		<li><i id="3" class="fa fa-star"></i></li>
         	</ul>
 
         	<span class="moves">3</span> Moves
@@ -79,6 +79,21 @@
                 <i class="fa fa-cube"></i>
             </li>
         </ul>
+    </div>
+
+    <div id="all-matched" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>You won this game in <span class="modal-text"> 0 </span> moves!!!</p>
+      </div>
+    </div>
+
+    <div id="threeGames" class="modal">
+      <div class="modal-content">
+        <span class="close-three-games">&times;</span>
+        <p>You won this game in <span class="modal-text-three-games"> 0 </span> moves!!!</p>
+        <p>You won three games.  The game will now reset.</p>
+      </div>
     </div>
 
     <script src="js/app.js"></script>
