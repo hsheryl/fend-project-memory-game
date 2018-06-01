@@ -8,15 +8,17 @@ let reset = document.querySelector(".fa-repeat");
 let moves = document.querySelector(".moves");
 let stars = document.querySelector(".stars");
 let winGame = document.getElementById('all-matched');
-let modalText = document.querySelector(".modal-text");
+let modalMovesText = document.querySelector(".moves-text");
+let modalStarText = document.querySelector(".star-rating");
+let modalTimeText = document.querySelector(".time");
 let closeModal = document.getElementsByClassName("close")[0];
-let threeGames = document.getElementById('three-games');
-let modalTextThreeGames = document.querySelector(".modal-text-three-games");
-let closeModalThreeGames = document.getElementsByClassName("close-three-games")[0];
+let yellow = document.getElementsByClassName("yellow");
+let star3 = document.getElementById(3);
+let star2 = document.getElementById(2);
 let numMoves = 0;
 let cardsOpen = 0;
 let matchCounter = 0;
-let gameCounter = 0;
+
 
 /*
  * Display the cards on the page
@@ -26,7 +28,6 @@ let gameCounter = 0;
  */
 window.onload = displayDeck();
 reset.addEventListener('click', function () {
-  gameCounter = 0;
   displayDeck();
 });
 
@@ -41,11 +42,6 @@ function displayDeck() {
     cardDeck.appendChild(shuffled[i]);
   }
   matchCounter = 0;
-  if(gameCounter != 0){
-    starToBeFilledIn = document.getElementById(gameCounter.toString());
-    starToBeFilledIn.classList.add('yellow');
-  }
-  gameCounter++;
   cardDeck.addEventListener('click', gamePlay);
 }
 
@@ -62,12 +58,8 @@ function resetClasses() {
   while (match.length){
     match[0].classList.remove("match");
   }
-  if(gameCounter === 0){
-    let yellow = document.getElementsByClassName("yellow");
-    while (yellow.length){
-      yellow[0].classList.remove("yellow");
-    }
-  }
+  star3.classList.add("yellow");
+  star2.classList.add("yellow");
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -99,10 +91,11 @@ function shuffle(array) {
 
 
 function gamePlay(event){
-  if (cardsOpen < 2 && !event.target.classList.contains("open") && !event.target.classList.contains("match")) {
+  if (cardsOpen < 2 && !event.target.classList.contains("open") && !event.target.classList.contains("deck")) {
     cardsOpen++;
     displayCard(event);
     checkMatch(event);
+    removeStar();
     if(matchCounter === 8){
       endGame();
     }
@@ -110,20 +103,10 @@ function gamePlay(event){
 }
 
 function endGame(){
-  if(gameCounter < 3){
-    modalText.innerHTML = numMoves;
+    modalMovesText.innerHTML = numMoves;
     winGame.style.display = "block";
     closeModal.onclick = function(){
       winGame.style.display = "none";
-    }
-    displayDeck();
-  }else{
-    modalTextThreeGames.innerHTML = numMoves;
-    threeGames.style.display = "block";
-    closeModalThreeGames.onclick = function(){
-      threeGames.style.display = "none";
-    }
-    gameCounter = 0;
     displayDeck();
   }
 }
@@ -161,5 +144,14 @@ function flipBack(cardOpen){
     cardOpen[0].classList.remove("show");
     cardOpen[0].classList.remove("open");
     cardsOpen = 0;
+  }
+}
+
+function removeStar(){
+  if(numMoves >= 8){
+    star3.classList.remove("yellow");
+  }
+  if(numMoves >= 16){
+    star2.classList.remove("yellow");
   }
 }
