@@ -14,7 +14,7 @@ Click on a card and it will turn over.  Then click on another card and it will t
 
 This game uses bootstrap, Google API's, and JavaScript.
 
-##Resources
+## Resources
 
 I appreciate the help that is available on the web.  This project was created using the following resources:
 [MDN web docs](https://developer.mozilla.org/en-US/)
