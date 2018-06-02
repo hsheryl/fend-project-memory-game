@@ -18,7 +18,9 @@ let star2 = document.getElementById(2);
 let numMoves = 0;
 let cardsOpen = 0;
 let matchCounter = 0;
-
+let seconds = 0;
+let endStars = 0;
+let timer = 0;
 
 /*
  * Display the cards on the page
@@ -42,6 +44,8 @@ function displayDeck() {
     cardDeck.appendChild(shuffled[i]);
   }
   matchCounter = 0;
+  stopTimer();
+  startTimer();
   cardDeck.addEventListener('click', gamePlay);
 }
 
@@ -102,8 +106,28 @@ function gamePlay(event){
   }
 }
 
+function startTimer(){
+  seconds = 0;
+  timer = setInterval(function(){
+    seconds++;
+    document.getElementById("seconds").innerText = seconds;
+  }, 1000);
+}
+
+function stopTimer(){
+  clearInterval(timer);
+}
+
 function endGame(){
     modalMovesText.innerHTML = numMoves;
+    modalTimeText.innerText = seconds;
+    if(endStars === 2){
+      modalStarText.innerText = "two stars";
+    }
+    if(endStars === 1){
+      modalStarText.innerText = "one star";
+    }
+    stopTimer();
     winGame.style.display = "block";
     closeModal.onclick = function(){
       winGame.style.display = "none";
@@ -150,8 +174,10 @@ function flipBack(cardOpen){
 function removeStar(){
   if(numMoves >= 8){
     star3.classList.remove("yellow");
+    endStars = 2;
   }
   if(numMoves >= 16){
     star2.classList.remove("yellow");
+    endStars = 1;
   }
 }
