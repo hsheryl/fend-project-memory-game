@@ -17,8 +17,9 @@ This game uses bootstrap, Google API's, and JavaScript.
 ## Resources
 
 I appreciate the help that is available on the web.  This project was created using the following resources:
-[MDN web docs](https://developer.mozilla.org/en-US/)
-[Logical Moon](http://logicalmoon.com/2015/05/using-javascript-to-create-a-timer/)
-[Javascript.info](https://javascript.info/settimeout-setinterval)
-Whoever the code reviewer was who reviewed my first submission when I wasn't completely done by the due date but submitted it anyway.
-My son for finding my spelling errors.
+
+* [MDN web docs](https://developer.mozilla.org/en-US/)
+* [Logical Moon](http://logicalmoon.com/2015/05/using-javascript-to-create-a-timer/)
+* [Javascript.info](https://javascript.info/settimeout-setinterval)
+* Whoever the code reviewer was who reviewed my first submission when I wasn't completely done by the due date but submitted it anyway.
+* My son for finding my spelling errors.
