@@ -2,19 +2,23 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+* [Gameplay](#gameplay)
+* [Dependencies](#dependencies)
+* [Resources](#resources)
 
-## Instructions
+## Gameplay
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+Click on a card and it will turn over.  Then click on another card and it will turn over.  If they match then you have made a match toward winning the game.  If they don't match then remember what the cards were so you can match them when you flip over the matching card.
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Dependencies
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+This game uses bootstrap, Google API's, and JavaScript.
 
-## Contributing
+##Resources
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+I appreciate the help that is available on the web.  This project was created using the following resources:
+[MDN web docs](https://developer.mozilla.org/en-US/)
+[Logical Moon](http://logicalmoon.com/2015/05/using-javascript-to-create-a-timer/)
+[Javascript.info](https://javascript.info/settimeout-setinterval)
+Whoever the code reviewer was who reviewed my first submission when I wasn't completely done by the due date but submitted it anyway.
+My son for finding my spelling errors.
