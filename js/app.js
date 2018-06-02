@@ -13,6 +13,7 @@ let modalStarText = document.querySelector(".star-rating");
 let modalTimeText = document.querySelector(".time");
 let closeModal = document.getElementsByClassName("close")[0];
 let yellow = document.getElementsByClassName("yellow");
+let resetGame = document.getElementById("reset-game");
 let star3 = document.getElementById(3);
 let star2 = document.getElementById(2);
 let numMoves = 0;
@@ -118,6 +119,11 @@ function stopTimer(){
   clearInterval(timer);
 }
 
+resetGame.addEventListener('click', function(){
+  winGame.style.display = "none";
+  displayDeck();
+});
+
 function endGame(){
     modalMovesText.innerHTML = numMoves;
     modalTimeText.innerText = seconds;
@@ -131,8 +137,8 @@ function endGame(){
     winGame.style.display = "block";
     closeModal.onclick = function(){
       winGame.style.display = "none";
-    displayDeck();
-  }
+    }
+  
 }
 
 function displayCard(event){
